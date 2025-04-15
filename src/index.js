@@ -1,7 +1,8 @@
 import express from 'express';
-import apiRoutes from './routes/apiRoutes.js';
-import {PORT} from './config/serverConfig.js';
+
 import connectDB from './config/db.js';
+import {PORT} from './config/serverConfig.js';
+import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
 
