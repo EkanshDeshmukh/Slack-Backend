@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "type": " module",
+    "type": "module",
     "scripts": {
         "lint:fix": "eslint . --fix ",
         "start": "npm run lint:fix && npx nodemon src/index.js",

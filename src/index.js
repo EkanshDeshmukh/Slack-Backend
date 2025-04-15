@@ -1,14 +1,19 @@
 import express from 'express';
-import { StatusCodes } from 'http-status-codes';
-
+import apiRoutes from './routes/apiRoutes.js';
 import {PORT} from './config/serverConfig.js';
+import connectDB from './config/db.js';
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.status(StatusCodes.OK).send('Hello, World!');
-});
+app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded request bodies
+
+app.use('/api',apiRoutes); 
+
 
 app.listen(PORT, () => {
+    connectDB()
+        .then(() => console.log('MongoDB connected'))
+        .catch((error) => console.error('MongoDB connection error:', error.message));
     console.log(`Server is running on port ${PORT}`);
 });
